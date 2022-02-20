@@ -25,47 +25,59 @@
    .cardbox{
      position: relative;
      z-index: 1;
+     transition: .5s;
    }
-   .cardbox::after{
-     content: '';
-     position: absolute;
-     top: 20%;
-     left: 20%;
-     width: 150px;
-     height: 150px;
-     border-radius: 50%;
-     background-color: #303030;
-    box-shadow: 0px 4px 4px rgba(61, 61, 61, 0.25),
-                0px 4px 4px rgba(184, 180, 180, 0.87),
-                0px 4px 4px rgba(184, 180, 180, 0.97),
-                0px 4px 4px rgba(184, 180, 180, 107),
-                0px 4px 4px rgba(184, 180, 180, 117),
-                0px 4px 4px rgba(184, 180, 180, 127),
-                0px 4px 4px rgba(184, 180, 180, 137),
-                0px 4px 4px rgba(184, 180, 180, 147);
-     z-index: -1;
+   .cardbox::before{
+     content: url(../img/White-heart.png);
+     transition: .5s;
+     transform: scale(0);
    }
    .input{
      background-color: #313131;
      border: 1px solid #fff;
    }
+   .card__info{
+     bottom: -5px;
+   }
    .btn-submit{
      background-color: transparent;
      border: 1px solid #fff;
    }
-  .cardbox:hover{
-    background-color: var(--body);
-    box-shadow: 0px 0px 2px rgba(250, 250, 250, 0.5),
-                0px 0px 2px rgba(250, 250, 250, 0.6),
-                0px 0px 2px rgba(250, 250, 250, 0.7),
-                0px 0px 2px rgba(250, 250, 250, 0.8)
+   .cardbox:hover{
+      background:var(--body);
+      box-shadow: unset;
+  }
+  .cardbox.laptop::before{
+    content: url(../img/laptop-shadow.png);
+    z-index: -1;
+    top: 10%;
+    left: 0;
+  }
+  .cardbox.bestseller::before{
+    content: url(../img/bestseller-shadow15.png);
+    z-index: -1;
+    top: 5%;
+    left: 10%;
   }
   .cardbox:hover.cardbox::before{
+    transform: scale(1);
     opacity: 1;
   }
   .cardbox:hover .dark{
     opacity: 1;
   }
+  .cardbox.phone::after{
+    opacity: 0;
+    transform: scale(0);
+  }
+  .cardbox:hover.cardbox.phone::after{
+    content: url(../img/iphone__shadow.png);
+    position: absolute;
+    bottom: 80px;
+    z-index: -1;
+    opacity: 1;
+    transform: scale(1);
+  } 
   .ps__title::before{
     content: url(../img/ps__title.png);
   }
@@ -104,6 +116,9 @@
   .logo::after{
     content: url(../img/logo-white.png);
     width: 100px;
+  }
+  .logo::after{
+    width: 120px !important;
   }
 
 }
