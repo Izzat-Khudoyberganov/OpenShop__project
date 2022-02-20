@@ -1,16 +1,21 @@
 @import url(./font.css);
 
 :root{
-  --NB: NotoSans-Bold;
-  --NR: NatoSans-Regular;
+  --NB: 'NotoSans-Bold';
+  --NR: 'NotoSans-Regular';
   --mainDark: #313131;
-  --bgcolor: #E5E5E5;
+  --bgcolor: #fff;
+  --title: #000;
+  --dots: #ABABAB;
+  --active: #313131;
+  --dark: #fff;
 }
 *{
   box-sizing: border-box;
 }
 body{
   font-family: var(--NR);
+  background-color: var(--bgcolor);
 }
 h1,
 h2,
@@ -23,9 +28,10 @@ a{
   margin: 0;
   list-style: none;
   text-decoration: none;
+  font-family: var(--NR) !important;
 }
 .header__top{
-  background-color: #212529;
+  background-color: var(--mainDark);
 }
 .header__top .navbar-nav{
   gap: 80px;
@@ -58,7 +64,7 @@ a{
   justify-content: space-between;
   padding: 18px 0;
 }
-.logo::before{
+.logo::after{
   content: url(../img/Logo.png);
   width: 187px;
 }
@@ -81,8 +87,12 @@ a{
   width: 630px;
   margin-left: 143px;
 }
+
+/* Loooooook  */
+
+
 .btn-submit{
- width: 33%;
+  width: 33%;
   border: none;
   font-family: var(--NR);
   font-size: 14px;
@@ -95,6 +105,7 @@ a{
   padding: 15px 0;
 }
 .header-nav .navbar-nav{
+  margin-left: auto;
   gap: 15px;
 }
 .carousel-indicators{
@@ -110,7 +121,7 @@ a{
   background: #ABABAB;
 }
 .carousel-indicators [data-bs-target].active{
-  background-color: #313131;
+  background-color: var(--active);
   width: 15px;
   height: 15px;
 }
@@ -126,6 +137,17 @@ a{
   font-family: var(--NB);
   max-width: 624px;
 }
+#dropdownMenuButton1{
+  color: var(--title);
+  position: relative;
+}
+#dropdownMenuButton1:active.show{
+  offset: none;
+}
+.dropdown-menu::after{
+  
+}
+
 .btn-dark{
   width: 190px;
 }
@@ -141,89 +163,79 @@ a{
   font-weight: 500;
   font-size: 1.5rem;
 }
-.col__item::before{
-  content: "-57%";
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--mainDark);
-  color: #f1f1f1;
-}
-.col__item--info{
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-}
-.item{
-  background-color: #F9F9F9;
-}
-.col__airpuds{
-  background-color: #f1f1f1;
-  box-sizing: border-box;
-  position: relative;
-  height: 235px;
-}
-.col__airpuds::before{
-  content: "-30%";
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--mainDark);
-  color: #f1f1f1;
-}
-.col__box{
-  position: relative;
+.cardbox{
+  padding: 18px 26px;
   max-width: 300px;
   width: 100%;
+  transition: .5s;
+  height: 330px;
 }
-.col__box::after{
-  content: "-20%";
+hr{
+  padding: 0;
+  margin: 0;
+  background-color:var(--title) ;
+}
+.title,
+.main__title{
+  color: var(--title);
+}
+.dropdown-menu{
+  background-color: var(--dark);
+}
+.dropdown-item{
+  color: var(--title);
+}
+.cardbox::before{
+  content: url(../img/Vector\ 7.png);
   position: absolute;
-  bottom: 20px;
-  left: 20px;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--mainDark);
-  color: #f1f1f1;
+  top: 17px;
+  right: 17px;
+  opacity: 0;
+  transition: .5s;
 }
-.col__box__info{
+.cardbox img{
+  display: block;
+}
+.ps__title{
+  position: relative;
+  color: var(--title);
+}
+.ps__title::before{
+  content: url(../img/ps__title__light.png);
+  top: -80px;
+  left: 0;
   position: absolute;
-  top: 20px;
-  left: 20px;
 }
-.card{
-  max-width: 300px;
-  width: 100%;
-  height: 300px;
-}
+
 .card__title{
   font-family: var(--NB);
   font-weight: 500;
   font-size: 16px;
   line-height: 22px;
+  margin-top: 30px;
+  color: var(--title);
+}
+.card__price{
+  color: var(--title);
 }
 .card__info{
-  bottom: 20px;
-  margin: 0 auto;
+  margin: 200px 0 15px;
 }
-.btn-dark{
+.dark{
   font-size: 20px;
+  padding: 5px 36px;
+  transition: .5s ease;
+  opacity: 0;
+}
+.cardbox:hover{
+  background: #FFFFFF;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
+}
+.cardbox:hover.cardbox::before{
+  opacity: 1;
+}
+.cardbox:hover .dark{
+  opacity: 1;
 }
 .play__station{
   max-width: 700px;
@@ -238,6 +250,7 @@ a{
   font-size: 18px;
   line-height: 25px;
   color: #fff;
+  text-align: left;
 }
 .footer-input{
  max-width: 500px !important;
@@ -253,6 +266,22 @@ a{
 }
 .footer__input{
    padding: 0 10px;
+}
+.footer__btn{
+  border: none;
+  background-color: var(--mainDark);
+  color:#fff;
+  height: 40px;
+  font-size: 18px;
+  line-height: 25px;
+  outline: 1px solid #fff;
+  transition: .5s;
+}
+.footer__btn:hover{
+  background-color:#fff ;
+  color: #000;
+  cursor: pointer;
+  outline: var(--bgcolor);
 }
 #dropdownMenuButton1::after{
    display: none;
